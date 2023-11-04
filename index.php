@@ -7,12 +7,19 @@
 </head>
 <body>
     <h1>Кінотеатр</h1>
-    <form action="db-actions.php" method="POST" name="search">
-    <label for="inputData">Введіть запит: </label>
-    <input type="text" name="inputData" required>
-    <input type="submit" value="Зберегти" name="sendingSearch">
-    </form>
-    <form action="db-actions.php" method="POST" name="sort">
+    <?php
+    include('db-movies.php');
+    include('db-actions.php');
+
+    echo '<h3>Зараз у кіно:</h3>';
+    if (isset($_POST["sort"])) {
+        $how_to_sort = $_POST["sort"];
+        sorting($how_to_sort);
+    }
+    array_walk($movies, "show");
+    echo "<p><i>$str</i></p>";
+    ?>
+    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" name="sort">
     <label for="sort">Оберіть сортування: </label>
     <select name="sort">
             <option value="cmp_director">Режисер</option>
@@ -25,5 +32,24 @@
     </select>
     <input type="submit" value="Зберегти" name="sendingSort">
     </form>
+    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" name="search">    
+    <label for="inputData">Введіть запит: </label>
+    <input type="text" name="inputData" required>
+    <input type="submit" value="Зберегти" name="sendingSearch">
+    </form>
+    <?php
+    if (isset($_POST['sendingSearch'])) {
+        global $str;
+        $data = $_POST["inputData"];
+        $res = search($movies, $data);
+        if (!$res) {
+            echo "<p>На жаль, на Ваш запит інформація <b>відсутня</b>.</p>";
+        }
+        else {
+            echo '<h3>Результат пошуку:</h3>';
+            array_walk($res, "show");
+        }
+    }
+    ?>
 </body>
 </html>

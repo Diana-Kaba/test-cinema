@@ -7,7 +7,7 @@ $str = "<p><i>Фільм(и) виведени згідно порядку в б�
 function show($val, $key)
 {
     global $str;
-    $showStr = "<h3>Результат пошуку:</h3><p>{$val['name']} ({$val['year']}) - {$val['genre']}. Сеанси: {$val['sessions']}. Режисер {$val['director']}. Видавництво {$val['studio']}.</p>";
+    $showStr = "<p>{$val['name']} ({$val['year']}) - {$val['genre']}. Сеанси: {$val['sessions']}. Режисер {$val['director']}. Видавництво {$val['studio']}.</p>";
     print_r($showStr);
 }
 
@@ -100,23 +100,4 @@ function sorting($how_to_sort)
             $str = "Сортування відбулось за сеансами...";
             break;
     }
-}
-
-if (isset($_POST['sendingSearch'])) {
-    global $str;
-    $data = $_POST["inputData"];
-    $res = search($movies, $data);
-    if (!$res) {
-        echo "<p>На жаль, на Ваш запит інформація <b>відсутня</b>.</p>";
-    }
-    else {
-        array_walk($res, "show");
-    }
-}
-
-if (isset($_POST["sort"])) {
-    $how_to_sort = $_POST["sort"];
-    sorting($how_to_sort);
-    array_walk($movies, "show");
-    echo "<p><i>$str</i></p>";
 }
