@@ -2,7 +2,7 @@
 
 include('db-movies.php');
 
-$str = "<p><i>Фільм(и) виведени згідно порядку в базі даних...</i></p>";
+$str = "<p><i>Фільм виведени згідно порядку в базі даних...</i></p>";
 
 function show($val, $key)
 {
@@ -13,18 +13,18 @@ function show($val, $key)
 
 function search($movies, $data) {
     $result = [];
-    $result = [];
     $isNoFound = false;
-    foreach ($movies as $movie_name => $movie) {
-        if (mb_stristr($movie_name, $data)) {
-            $result[] = $movie_name;
+    foreach ($movies as $movie_index => $movie) {
+        if (mb_stristr($movies[$movie_index]['name'], $data)) {
+            $result[] = $movie_index;
         }
         foreach ($movie as $value) {
             if (mb_stristr($value, $data)) {
-                $result[] = $movie_name;
+                $result[] = $movie_index;
             }
         }
     }
+
 
     if(!$result) {
         $isNoFound = true;
