@@ -1,0 +1,15 @@
+/* Header Styles start */
+
+.header-area .main-nav ul.nav {
+    align-items: center;
+}
+
+.header-area .main-nav .nav li a, .header-area .main-nav .nav li:last-child a {
+    text-transform: none;
+}
+
+.header-area .main-nav .nav li:last-child a:hover {
+    background-color: rgba(255, 255, 255, 0.10);
+}
+
+/* Header Styles end */
