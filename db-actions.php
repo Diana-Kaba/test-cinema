@@ -18,8 +18,9 @@ function search($movies, $data) {
         if (mb_stristr($movies[$movie_index]['name'], $data)) {
             $result[] = $movie_index;
         }
+
         foreach ($movie as $value) {
-            if (mb_stristr($value, $data)) {
+            if (is_string($value) && mb_stristr($value, $data)) {
                 $result[] = $movie_index;
             }
         }
