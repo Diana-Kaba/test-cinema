@@ -11,7 +11,13 @@ function show($val, $key)
     print_r($showStr);
 }
 
+function test_input($data)
+{
+    return htmlspecialchars(stripslashes(trim($data)));
+}
+
 function search($movies, $data) {
+    $data = test_input($data);
     $result = [];
     $isNoFound = false;
     foreach ($movies as $movie_index => $movie) {

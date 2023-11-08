@@ -7,6 +7,19 @@
 </head>
 <body>
     <h1>Кінотеатр</h1>
+    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" name="sort">
+    <label for="sort">Оберіть сортування: </label>
+    <select name="sort">
+            <option value="cmp_director" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_director") echo "selected"; ?>>Режисер</option>
+            <option value="cmp_year" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_year") echo "selected"; ?>>Дата випуску</option>
+            <option value="cmp_name" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_name") echo "selected"; ?>>Назва</option>
+            <option value="cmp_genre" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_genre") echo "selected"; ?>>Жанр</option>
+            <option value="cmp_rating" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_rating") echo "selected"; ?>>Рейтинг</option>
+            <option value="cmp_studio" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_studio") echo "selected"; ?>>Кіностудія</option>
+            <option value="cmp_sessions" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_sessions") echo "selected"; ?>>Сеанси</option>
+    </select>
+    <input type="submit" value="Зберегти" name="sendingSort">
+    </form>
     <?php
     include('db-movies.php');
     include('db-actions.php');
@@ -19,19 +32,6 @@
     array_walk($movies, "show");
     echo "<p><i>$str</i></p>";
     ?>
-    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" name="sort">
-    <label for="sort">Оберіть сортування: </label>
-    <select name="sort">
-            <option value="cmp_director">Режисер</option>
-            <option value="cmp_year">Дата випуску</option>
-            <option value="cmp_name">Назва</option>
-            <option value="cmp_genre">Жанр</option>
-            <option value="cmp_rating">Рейтинг</option>
-            <option value="cmp_studio">Кіностудія</option>
-            <option value="cmp_sessions">Сеанси</option>
-    </select>
-    <input type="submit" value="Зберегти" name="sendingSort">
-    </form>
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" name="search">    
     <label for="inputData">Введіть запит: </label>
     <input type="text" name="inputData" required>
