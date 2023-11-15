@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="uk" style="background: lightblue;">
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title lang="en">The Rex Cinema</title>
-    <link rel="shortcut icon" href="./assets/images/logo-rex.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/images/icon-rex.png" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -41,7 +41,9 @@
     <!-- ***** Preloader End ***** -->
 
     <?php
-    include("./header.html");
+    include("header.html");
+    include("main.php");
+    include("footer.html");
     ?>
 
     <!-- Scripts -->

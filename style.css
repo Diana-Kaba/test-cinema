@@ -13,3 +13,11 @@
 }
 
 /* Header Styles end */
+
+/*  Sort films start */
+
+.section-heading h2 {
+    text-transform: none;
+}
+
+/* Sort films end */

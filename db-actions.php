@@ -7,8 +7,20 @@ $str = "<p><i>Фільм виведени згідно порядку в баз�
 function show($val, $key)
 {
     global $str;
-    $showStr = "<p>{$val['name']} ({$val['year']}) - {$val['genre']}. Сеанси: {$val['sessions']}. Режисер {$val['director']}. Видавництво {$val['studio']}.</p>";
-    print_r($showStr);
+    // $showStr = "<p>{$val['name']} ({$val['year']}) - {$val['genre']}. Сеанси: {$val['sessions']}. Режисер {$val['director']}. Видавництво {$val['studio']}.</p>";
+    // print_r($showStr);
+    echo "        <div class='col-lg-3 col-md-6'>
+    <div class='item'>
+      <div class='thumb'>
+        <a href='#'><img src='{$val['image']}'></a>
+        <span class='price'>{$val['price']}</span>
+      </div>
+      <div class='down-content'>
+        <span class='category'>{$val['genre']}</span>
+        <h4>{$val['name']}</h4>
+      </div>
+    </div>
+  </div>";
 }
 
 function test_input($data)

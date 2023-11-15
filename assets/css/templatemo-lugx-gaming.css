@@ -140,7 +140,7 @@ body {
 .section-heading h2 {
   font-size: 36px;
   font-weight: 700;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   margin-top: 20px;
   line-height: 44px;
 }
@@ -376,6 +376,7 @@ Header Style
   font-size: 15px;
   height: 40px;
   line-height: 40px;
+  text-transform: capitalize;
   color: #fff;
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
@@ -387,6 +388,7 @@ Header Style
 
 .header-area .main-nav .nav li:last-child a {
   background-color: #ee626b;
+  text-transform: uppercase;
   font-weight: 500;
 }
 
@@ -592,6 +594,7 @@ Header Style
   .header-area .nav li:last-child a {
     background-color: transparent !important;
     font-weight: 300 !important;
+    text-transform: capitalize !important;
   }
   .header-area {
     background-color: transparent;
