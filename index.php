@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кінотеатр</title>
-</head>
-<body>
-    <h1>Кінотеатр</h1>
-    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" name="sort">
-    <label for="sort">Оберіть сортування: </label>
-    <select name="sort">
-            <option value="cmp_director" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_director") echo "selected"; ?>>Режисер</option>
-            <option value="cmp_year" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_year") echo "selected"; ?>>Дата випуску</option>
-            <option value="cmp_name" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_name") echo "selected"; ?>>Назва</option>
-            <option value="cmp_genre" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_genre") echo "selected"; ?>>Жанр</option>
-            <option value="cmp_rating" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_rating") echo "selected"; ?>>Рейтинг</option>
-            <option value="cmp_studio" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_studio") echo "selected"; ?>>Кіностудія</option>
-            <option value="cmp_sessions" <?php if (isset($_POST["sort"]) && $_POST["sort"] == "cmp_sessions") echo "selected"; ?>>Сеанси</option>
-    </select>
-    <input type="submit" value="Зберегти" name="sendingSort">
-    </form>
-    <?php
-    include('db-movies.php');
-    include('db-actions.php');
+    <title lang="en">The Rex Cinema</title>
+    <link rel="shortcut icon" href="./assets/images/icon-rex.png" type="image/x-icon">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    echo '<h3>Зараз у кіно:</h3>';
-    if (isset($_POST["sort"])) {
-        $how_to_sort = $_POST["sort"];
-        sorting($how_to_sort);
-    }
-    array_walk($movies, "show");
-    echo "<p><i>$str</i></p>";
-    ?>
-    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" name="search">    
-    <label for="inputData">Введіть запит: </label>
-    <input type="text" name="inputData" required>
-    <input type="submit" value="Зберегти" name="sendingSearch">
-    </form>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- Diana's CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!--
+    TemplateMo 589 lugx gaming
+    https://templatemo.com/tm-589-lugx-gaming
+    -->
+</head>
+
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
     <?php
-    if (isset($_POST['sendingSearch'])) {
-        global $str;
-        $data = $_POST["inputData"];
-        $res = search($movies, $data);
-        if (!$res) {
-            echo "<p>На жаль, на Ваш запит інформація <b>відсутня</b>.</p>";
-        }
-        else {
-            echo '<h3>Результат пошуку:</h3>';
-            array_walk($res, "show");
-        }
-    }
+    include("header.html");
+    include("main.php");
+    include("footer.html");
     ?>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/counter.js"></script>
+    <script src="assets/js/custom.js"></script>
+
 </body>
+
 </html>
