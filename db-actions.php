@@ -119,4 +119,5 @@ function sorting($how_to_sort)
             $str = "Сортування відбулось за сеансами...";
             break;
     }
+    return $str;
 }
