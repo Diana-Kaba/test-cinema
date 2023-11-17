@@ -40,16 +40,17 @@ include 'db-actions.php';
         <div class="col-lg-6">
         <div class="main-button">
           <?php
-echo "<p class='direct'><i>{$str}</i></p>";
-?>
+          if (isset($_POST["sort"])) {
+          $how_to_sort = $_POST["sort"];
+          sorting($how_to_sort);
+          }
+          echo "<p class='direct'><i>{$str}</i></p>";
+          ?>
           </div>
         </div>
 
   <?php
-if (isset($_POST["sort"])) {
-    $how_to_sort = $_POST["sort"];
-    sorting($how_to_sort);
-}
+
 array_walk($movies, "show");
 ?>
 
