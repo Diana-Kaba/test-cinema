@@ -204,5 +204,5 @@ if (isset($_POST['sendingSearch'])) {
       </div>
     </div>
   </div>
-
+  </div>
 <!-- Contact end -->
